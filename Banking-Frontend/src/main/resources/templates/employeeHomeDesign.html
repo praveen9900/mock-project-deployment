@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Employee Home</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="login">Logout</a>
+		</div>
+	</nav>
+
+	<div class="container-fluid p-5 bg-primary text-white text-center">
+		<h1>Welcome to Online Banking</h1>
+		<p>We are there for you.</p>
+	</div>
+	<h3 align="center">Employee Dashboard</h3>
+	<hr>
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="imgcontainer">
+					<img alt="" th:src="@{/images/custdetails.jfif}"
+						style="width: 96px; height: 96px">
+				</div>
+
+				<h3>Get any customer details</h3>
+				<a href="customerDetails"> Get any customer details</a>
+				<hr>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="imgcontainer">
+					<img alt="" th:src="@{/images/user.jfif}"
+						style="width: 96px; height: 96px">
+				</div>
+				<h3>List all customers</h3>
+				<a href="getAllCustomers">List all customers</a>
+				<hr>
+			</div>
+			<div class="col-sm-4">
+				<div class="imgcontainer">
+					<img alt="" th:src="@{/images/account.jfif}"
+						style="width: 96px; height: 96px">
+				</div>
+				<h3>Open account</h3>
+				<a href="openAcc">Open account for registered customers</a>
+				<hr>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="imgcontainer">
+					<img alt="" th:src="@{/images/activate.jpg}"
+						style="width: 96px; height: 96px">
+				</div>
+				<h3>Activate account for customer</h3>
+				<a href="activate">Activate account for customer</a>
+				<hr>
+			</div>
+			<div class="col-sm-4">
+				<div class="imgcontainer">
+					<img alt="" th:src="@{/images/deactivate.webp}"
+						style="width: 96px; height: 96px">
+				</div>
+				<h3>Deactivate account for customer</h3>
+				<a href="deactivate">Deactivate account for customer</a>
+				<hr>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>

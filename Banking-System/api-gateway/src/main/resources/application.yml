@@ -1,0 +1,48 @@
+server:
+  port: 8185
+spring:
+#  datasource:
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    password: root
+#    url: jdbc:mariadb://localhost:3306/credentialdb
+#    username: root
+  application:
+       name: api-gateway
+  
+  
+  cloud:
+     gateway:
+       enabled: true
+       routes:
+       - id: customer-microservice
+         uri: lb://customer-microservice
+         predicates:
+         - Path=/customer/**
+         
+       - id: employee-microservice
+         uri: lb://employee-microservice
+         predicates:
+         - Path=/employee/**
+       
+       - id: login-service
+         uri: lb://login-service
+         predicates:
+         - Path=/register/**
+         
+         
+
+eureka:
+  client:
+      register-with-eureka: true
+      service-url:
+         defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/} 
+
+logging:
+    file:
+      name: api-gateway.log
+management:
+   endpoint:
+       web:
+         exposure:
+            include:
+            - '*'            

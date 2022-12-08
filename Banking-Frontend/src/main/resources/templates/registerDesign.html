@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Customer registration form</title>
+<link
+	href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600'
+	rel='stylesheet' type='text/css'>
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+	rel="stylesheet">
+<style>
+html, body {
+	min-height: 100%;
+}
+
+body, div, form, p, a {
+	padding: 0;
+	margin: 0;
+	outline: none;
+	font-family: Roboto, Arial, sans-serif;
+	font-size: 14px;
+	color: white;
+}
+
+h1 {
+	margin: 0;
+	font-weight: 400;
+}
+
+h3 {
+	margin: 12px 0;
+	color: #8ebf42;
+}
+
+.main-block {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+form {
+	width: 100%;
+	padding: 20px;
+	color: "black";
+}
+
+fieldset {
+	border: none;
+	border-top: 1px solid #8ebf42;
+}
+
+.account-details, .personal-details {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.account-details>div, .personal-details>div>div {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.account-details>div, .personal-details>div, input, label {
+	width: 100%;
+}
+
+label {
+	padding: 0 5px;
+	text-align: right;
+	vertical-align: middle;
+}
+
+input {
+	padding: 5px;
+	vertical-align: middle;
+}
+
+select {
+	background: transparent;
+}
+
+button {
+	width: 10%;
+	padding: 10px 0;
+	margin: 10px auto;
+	border-radius: 5px;
+	border: none;
+	background: #8ebf42;
+	font-size: 14px;
+	font-weight: 600;
+	color: #fff;
+	align-content: center;
+}
+
+button:hover {
+	background: #82b534;
+}
+
+@media ( min-width : 568px) {
+	.account-details>div, .personal-details>div {
+		width: 50%;
+	}
+	label {
+		width: 40%;
+	}
+	input {
+		width: 60%;
+	}
+	select, .children, .gender, .bdate-block {
+		width: calc(20% + 16px);
+	}
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: black;
+	background-image: url("/images/back.webp");
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 0.9;
+}
+</style>
+
+</head>
+<body>
+	<div class="main-block">
+		<form action="registerCustomer" method="post">
+			<h1>Register a Customer</h1>
+			<fieldset>
+				<legend>
+					<h3>Please fill the details given below</h3>
+				</legend>
+				<div class="account-details">
+					<div>
+						<label>First Name*</label><input type="text" name="userFirstName"
+							required>
+					</div>
+					<hr>
+					<div>
+						<label>Last Name*</label><input type="text" name="userLastName"
+							required>
+					</div>
+					<hr>
+					<div>
+						<label>Set a Password *</label><input type="password"
+							name="password" required>
+					</div>
+					<hr>
+					<div>
+						<label>Set a Email*</label><input type="text" name="email"
+							required>
+					</div>
+				</div>
+				<div>
+					<label>User*</label> <select class="form-select" name="user">
+						<option selected>Select User</option>
+						<option value="customer">Customer</option>
+						<option value="employee">Employee</option>
+
+					</select>
+				</div>
+			</fieldset>
+
+
+
+			<button type="submit">Submit</button>
+
+			<div class="container signin">
+				<p>
+					Already a registered Customer? <a th:href="login">Login</a>.
+				</p>
+			</div>
+		</form>
+
+
+
+	</div>
+</body>
+</html>

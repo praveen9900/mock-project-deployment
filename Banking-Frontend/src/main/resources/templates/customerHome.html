@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Customer Home</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="login">Logout</a>
+  </div>
+</nav>
+	<div class="container-fluid p-5 bg-primary text-white text-center">
+		<h1>Welcome to Online Banking</h1>
+		<p>We are there for you.</p>
+	</div>
+	<h3 align="center">Customer Dashboard</h3>
+	<hr>
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="imgcontainer">
+					<img alt="" th:src="@{/images/account.jfif}"
+						style="width: 96px; height: 96px">
+				</div>
+
+				<h3>Create a Account</h3>
+				<a href="createAccount">Create a New Account</a>
+				<hr>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="imgcontainer">
+					<img alt="" th:src="@{/images/balance.jfif}"
+						style="width: 96px; height: 96px">
+				</div>
+				<h3>Check balance</h3>
+				<a href="balance">Check balance</a>
+				<hr>
+			</div>
+			<div class="col-sm-4">
+				<div class="imgcontainer">
+					<img alt="" th:src="@{/images/withdraw.jfif}"
+						style="width: 96px; height: 96px">
+				</div>
+				<h3>Withdraw Amount</h3>
+				<a href="withdraw">Withdraw Amount</a>
+				<hr>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="imgcontainer">
+					<img alt="" th:src="@{/images/deposit.jfif}"
+						style="width: 96px; height: 96px">
+				</div>
+				<h3>Deposit Amount</h3>
+				<a href="deposit">Deposit Amount</a>
+				<hr>
+			</div>
+			<div class="col-sm-4">
+				<div class="imgcontainer">
+					<img alt="" th:src="@{/images/transfer.jfif}"
+						style="width: 96px; height: 96px">
+				</div>
+				<h3>Transfer Amount</h3>
+				<a href="transfer">Transfer Amount</a>
+				<hr>
+			</div>
+			<div class="col-sm-4">
+				<div class="imgcontainer">
+					<img alt="" th:src="@{/images/statement.jfif}"
+						style="width: 96px; height: 96px">
+				</div>
+				<h3>Fetch Statement</h3>
+				<a href="statementInput">Statement</a>
+				<hr>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

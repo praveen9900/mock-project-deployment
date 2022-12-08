@@ -1,0 +1,79 @@
+version: '3'
+services:
+  eureka-server:
+    image: eureka-server:1.0
+    container_name: eureka-server
+    expose:
+    - "8761"
+    ports:
+    - 8761:8761
+    
+  config-server:
+    image: config-server:1.0
+    container_name: config-server
+    ports:
+    - "8888:8888"   
+    environment:
+      - JAVA_OPTS=
+            -DGIT_URL=https://github.com/praveen9900/config.git
+    depends_on:
+      - eureka-server
+              
+  
+  customer-microservice:
+    image: customer-microservice:1.0
+    #container_name: customer-microservice
+    ports:
+    - "8181:8181"
+    environment:
+      - JAVA_OPTS=
+           -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC_URL=jdbc:mariadb://training-server.cuxj17nm1juq.us-east-1.rds.amazonaws.com:3306/accountdb -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)    
+    depends_on:
+      - eureka-server
+      - config-server
+    links:
+        - eureka-server
+        - config-server
+        
+  employee-microservice:
+    image: employee-microservice:1.0
+    #container_name: employee-microservice
+    ports:
+    - "8182:8182"
+    environment:
+      - JAVA_OPTS=
+           -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC_URL=jdbc:mariadb://training-server.cuxj17nm1juq.us-east-1.rds.amazonaws.com:3306/accountdb -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)    
+    depends_on:
+      - eureka-server
+      - config-server
+    links:
+        - eureka-server
+        - config-server
+
+  login-service:
+    image: login-service:1.0
+    #container_name: login-service
+    ports:
+    - "8183:8183"   
+    environment:
+      - JAVA_OPTS=
+           -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC_URL=jdbc:mariadb://training-server.cuxj17nm1juq.us-east-1.rds.amazonaws.com:3306/credentialdb -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)    
+    depends_on:
+      - eureka-server
+      - config-server
+    links:
+        - eureka-server
+        - config-server
+   
+  api-gateway:
+    image: api-gateway:2.7.4
+    #container_name: gateway-service
+    ports:
+    - "8185:8185"   
+    environment:
+      - JAVA_OPTS=
+           -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka  #(name of eureka host==eureka container name)     
+    depends_on:
+      - eureka-server
+    links:
+        - eureka-server
